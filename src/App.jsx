@@ -14,6 +14,8 @@ class App extends Component {
       data: [],
       loading: false
     };
+    this.filters = {};
+    this.addToFilter = this.addToFilter.bind(this);
   }
   componentDidMount() {
     this.setState({loading: true})
@@ -23,12 +25,15 @@ class App extends Component {
       .catch(err=>this.setState({err: true}))
       .then(()=>this.setState({loading: false}));
   }
+  addToFilter(key, value) {
+    this.filters[key] = value;
+  }
   render() {
     return (
       <div>
         <Header />
         <Container>
-          <FilterBar />
+          <FilterBar onChange={this.addToFilter} />
           <CardContainer loading={this.state.loading} data={this.state.data} />
         </Container>
       </div>
