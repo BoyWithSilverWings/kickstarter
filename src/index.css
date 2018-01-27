@@ -66,3 +66,10 @@ body {
 .filter-bar {
   margin: 1rem 0 !important;
 }
+
+.sorter {
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+}
