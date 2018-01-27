@@ -3,7 +3,7 @@ const localStorage = window.localStorage;
 class Storage {
   static getAll() {
     const filters = localStorage.getItem('filter');
-    return JSON.parse(filters);
+    return JSON.parse(filters)||null;
   }
 
   static set(key, value) {

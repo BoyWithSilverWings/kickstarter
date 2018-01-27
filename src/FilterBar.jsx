@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {isEqual} from 'lodash';
 import { Grid, Input, Icon, Dropdown, Button } from 'semantic-ui-react';
 import Sort from './Filter/Sort';
 import {LOCATIONS} from './constants';
@@ -14,9 +15,37 @@ class FilterBar extends React.Component {
       location: ''
     }
     this.onSearch = this.onSearch.bind(this);
+    this.setFilters = this.setFilters.bind(this);
     this.onSort = this.onSort.bind(this);
     this.onFilter = this.onFilter.bind(this);
     this.onRemove = this.onRemove.bind(this);
+  }
+  componentDidMount() {
+    this.setFilters(this.props.filters);
+  }
+  componentWillReceiveProps(nextProps) {
+    if(!isEqual(nextProps.filters, this.props.filters)) {
+      this.setFilters(nextProps.filters);
+    }
+  }
+  setFilters(filters) {
+    const sortFilter = this.props.filters.sort || null;
+    if (sortFilter) {
+      const key = sortFilter.key;
+      const otherOne = key === 'end' ? 'progress' : 'end';
+      const value = sortFilter['value'];
+      this.setState({
+        searchTerm: this.props.filters.search || '',
+        [key]: value,
+        [otherOne]: null,
+        location: this.props.filters.filter || ''
+      });
+    } else {
+      this.setState({
+        searchTerm: this.props.filters.search || '',
+        location: this.props.filters.filter || ''
+      });
+    }
   }
   onSearch(event,data) {
     this.setState({searchTerm: data.value});
@@ -85,6 +114,7 @@ class FilterBar extends React.Component {
 }
 
 FilterBar.propTypes = {
+  filters: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired
 }
