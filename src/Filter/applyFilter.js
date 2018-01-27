@@ -27,7 +27,6 @@ function applyFilters(data, filter) {
   const filteredArray = filter.filter?fliter(searchArray, filter.filter):searchArray;
   let sortedArray = filteredArray;
   if(filter.sort) {
-    console.log(filter.sort);
     if(filter.sort.key==='progress') {
       sortedArray = sort(filteredArray, 'percentage.funded', filter.sort.value);
     } 
