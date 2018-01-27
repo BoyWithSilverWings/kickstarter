@@ -54,11 +54,13 @@ class App extends Component {
   restoreSession(event) {
     event.preventDefault();
     this.setState({
-      openModal: false
+      openModal: false,
+      data: applyFilters(this.dataFromAPI.slice(), this.filters)
     });
   }
   closeModal(event) {
     event.preventDefault();
+    Storage.clear();
     this.setState({
       filters: {},
       openModal: false

@@ -29,21 +29,24 @@ class FilterBar extends React.Component {
     }
   }
   setFilters(filters) {
-    const sortFilter = this.props.filters.sort || null;
+    filters = filters||{};
+    const sortFilter = filters.sort || null;
     if (sortFilter) {
       const key = sortFilter.key;
       const otherOne = key === 'end' ? 'progress' : 'end';
       const value = sortFilter['value'];
       this.setState({
-        searchTerm: this.props.filters.search || '',
+        searchTerm: filters.search || '',
         [key]: value,
         [otherOne]: null,
-        location: this.props.filters.filter || ''
+        location: filters.filter || ''
       });
     } else {
       this.setState({
-        searchTerm: this.props.filters.search || '',
-        location: this.props.filters.filter || ''
+        searchTerm: filters.search || '',
+        end: null,
+        progress: null,
+        location: filters.filter || ''
       });
     }
   }
@@ -113,8 +116,12 @@ class FilterBar extends React.Component {
   }
 }
 
+FilterBar.defaultProps = {
+  filters: null
+}
+
 FilterBar.propTypes = {
-  filters: PropTypes.object.isRequired,
+  filters: PropTypes.object,
   onChange: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired
 }
