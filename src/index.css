@@ -1,5 +1,33 @@
-@import-normalize; /* stylelint-disable-line */
+:root {
+  --header-background: #243b4a;
+}
+
+@font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}
 
 body {
-  background-color: aliceblue;
+  margin: 0;
+  font-family: "system";
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  background: var(--header-background);
+  height: 4rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5vmax;
+  font-size: 1.7rem;
+
+  & .starting {
+    color: #69f0ae;
+  }
 }

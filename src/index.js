@@ -2,22 +2,13 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import 'semantic-ui-css/semantic.min.css';
 import "./index.css";
 import App from "./App";
 
 //Adding support for <IE11 because React 16 uses Map and Set. These are not natively supported on these browsers.
 import "core-js/es6/map";
 import "core-js/es6/set";
-
-// if (module.hot) {
-//   module.hot.accept();
-
-//   window.addEventListener("message", e => {
-//     if (process.env.NODE_ENV !== "production") {
-//       console.clear();
-//     }
-//   });
-// }
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {
