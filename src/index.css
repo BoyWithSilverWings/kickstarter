@@ -32,8 +32,14 @@ body {
   }
 }
 
-.card-container {
-  min-height: 100vh;
+.segment.card-container {
+  height: 70vh;
+  overflow: auto;
+  border: none;
+  box-shadow: unset;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .project-card {
@@ -64,7 +70,7 @@ body {
 }
 
 .filter-bar {
-  margin: 1rem 0 !important;
+  margin: 5rem 0 1rem !important;
 }
 
 .sorter {

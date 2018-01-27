@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Container>
+        <Container fluid>
           <FilterBar onChange={this.addToFilter} />
           <CardContainer loading={this.state.loading} data={this.state.data} />
         </Container>

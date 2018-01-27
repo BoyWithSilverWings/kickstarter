@@ -5,7 +5,7 @@ import {distanceInWordsToNow} from 'date-fns';
 
 function CardContainer({loading, data}) {
   return (
-    <Segment className='card-container' loading={loading}>
+    <Segment className='segment card-container' loading={loading}>
       {
         data.map(item=>
           (
