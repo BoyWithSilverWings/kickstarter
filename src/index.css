@@ -2,6 +2,8 @@
   --header-background: #243b4a;
 }
 
+@custom-media --small-viewport (max-width: 768px);
+
 @font-face {
   font-family: system;
   font-style: normal;
@@ -42,6 +44,24 @@ body {
   margin: 0 auto;
 }
 
+@media (--small-viewport) {
+  .segment.card-container {
+    width: 100%;
+
+    & .percentage-funded {
+      right: 0;
+
+      & .value {
+        font-size: 1rem !important;
+      }
+
+      & .label {
+        font-size: 0.7rem !important;
+      }
+    }
+  }
+}
+
 .project-card {
   position: relative;
 
@@ -71,6 +91,12 @@ body {
 
 .filter-bar {
   margin: 5rem 0 1rem !important;
+}
+
+@media (--small-viewport) {
+  .filter-bar {
+    margin: 10px 0;
+  }
 }
 
 .sorter {

@@ -81,19 +81,19 @@ class FilterBar extends React.Component {
     return (
       <Grid container className='filter-bar' verticalAlign='middle'>
         <Grid.Row>
-          <Grid.Column width={7}>
+          <Grid.Column mobile={16} computer={7}>
             <Input icon placeholder='Search...' fluid transparent value={this.state.searchTerm} onChange={this.onSearch} className='search-input'>
               <input />
               <Icon name='search' />
             </Input>
           </Grid.Column>
-          <Grid.Column width={2}>
+          <Grid.Column mobile={8} computer={2}>
             <Sort title='end' mode={this.state.end} onChange={this.onSort} />
           </Grid.Column>
-          <Grid.Column width={2}>
+          <Grid.Column mobile={8} computer={2}>
             <Sort title='progress' mode={this.state.progress} onChange={this.onSort} />
           </Grid.Column>
-          <Grid.Column width={4}>
+          <Grid.Column mobile={8} computer={4}>
             <Dropdown 
               placeholder='Location' 
               fluid 
@@ -104,7 +104,7 @@ class FilterBar extends React.Component {
               onChange={this.onFilter}
             />
           </Grid.Column>
-          <Grid.Column width={1}>
+          <Grid.Column mobile={8} computer={1}>
             <Button icon labelPosition='right' color='teal' onClick={this.onRemove}>
               Clear
               <Icon name='close' />
