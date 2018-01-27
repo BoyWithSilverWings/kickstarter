@@ -5,7 +5,9 @@ import {API_URL} from './constants';
 import Header from './Header';
 import CardContainer from './CardContainer';
 import FilterBar from './FilterBar';
+import Footer from './Footer';
 import applyFilters from './Filter/applyFilter';
+import Storage from './Filter/LocalStorage';
 import "whatwg-fetch";
 
 class App extends Component {
@@ -22,6 +24,7 @@ class App extends Component {
       filter: null
     };
     this.addToFilter = this.addToFilter.bind(this);
+    this.clearFilter = this.clearFilter.bind(this);
   }
   componentDidMount() {
     this.setState({loading: true})
@@ -36,8 +39,20 @@ class App extends Component {
   }
   addToFilter(key, value) {
     this.filters[key] = value;
+    Storage.set(key, value);
     this.setState({
-      data: applyFilters(this.dataFromAPI, this.filters)
+      data: applyFilters(this.dataFromAPI.slice(), this.filters)
+    });
+  }
+  clearFilter() {
+    this.filters = {
+      search: null,
+      sort: null,
+      filter: null
+    };
+    Storage.clear();
+    this.setState({
+      data: this.dataFromAPI
     });
   }
   render() {
@@ -45,9 +60,10 @@ class App extends Component {
       <div>
         <Header />
         <Container fluid>
-          <FilterBar onChange={this.addToFilter} />
+          <FilterBar onChange={this.addToFilter} onClear={this.clearFilter} />
           <CardContainer loading={this.state.loading} data={this.state.data} />
         </Container>
+        <Footer />
       </div>
     );
   }
