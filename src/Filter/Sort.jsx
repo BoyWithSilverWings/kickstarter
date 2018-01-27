@@ -25,7 +25,7 @@ class Sort extends React.Component {
       return {
         mode: newMode
       }
-    })
+    }, () => this.props.onChange(this.props.title, this.state.mode));
   }
   render() {
     const {title} = this.props;
@@ -45,8 +45,9 @@ Sort.defaultProps = {
 }
 
 Sort.propTypes = {
-  mode: PropTypes.string,
-  title: PropTypes.string.isRequired
+  mode: PropTypes.oneOf([null, 'asc', 'des']),
+  title: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default Sort;

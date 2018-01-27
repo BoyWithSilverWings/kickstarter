@@ -8,13 +8,28 @@ class FilterBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: ''
+      searchTerm: '',
+      end: null,
+      progress: null
     }
     this.onSearch = this.onSearch.bind(this);
+    this.onSort = this.onSort.bind(this);
+    this.onFilter = this.onFilter.bind(this);
   }
   onSearch(event,data) {
     this.setState({searchTerm: data.value});
     this.props.onChange('search', data.value);
+  }
+  onSort(key, value) {
+    const otherOne = key==='end'?'progress':'end';
+    this.setState({
+      [key]: value,
+      [otherOne]: null
+    });
+    this.props.onChange('sort', {key, value});
+  }
+  onFilter(event, data) {
+    this.props.onChange('filter', data.value);
   }
   render() {
     return (
@@ -27,13 +42,13 @@ class FilterBar extends React.Component {
             </Input>
           </Grid.Column>
           <Grid.Column width={2}>
-            <Sort title='END' />
+            <Sort title='end' mode={this.state.end} onChange={this.onSort} />
           </Grid.Column>
           <Grid.Column width={2}>
-            <Sort title='PROGRESS' />
+            <Sort title='progress' mode={this.state.progress} onChange={this.onSort} />
           </Grid.Column>
           <Grid.Column width={4}>
-            <Dropdown placeholder='Location' fluid search selection options={LOCATIONS} />
+            <Dropdown placeholder='Location' fluid search selection options={LOCATIONS} onChange={this.onFilter} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

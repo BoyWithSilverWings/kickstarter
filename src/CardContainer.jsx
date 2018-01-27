@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Loader, Dimmer, Segment, Card, Icon, Statistic } from 'semantic-ui-react';
+import { Segment, Card, Icon, Statistic } from 'semantic-ui-react';
 import {distanceInWordsToNow} from 'date-fns';
 
 function CardContainer({loading, data}) {

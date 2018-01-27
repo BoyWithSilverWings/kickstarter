@@ -72,4 +72,5 @@ body {
   width: 100%;
   display: flex;
   cursor: pointer;
+  text-transform: uppercase;
 }
