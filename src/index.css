@@ -62,3 +62,7 @@ body {
     top: 25%;
   }
 }
+
+.filter-bar {
+  margin: 1rem 0 !important;
+}
