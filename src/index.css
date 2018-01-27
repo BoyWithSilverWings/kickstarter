@@ -15,7 +15,7 @@ body {
   width: 100%;
 }
 
-.header {
+.page-header {
   width: 100%;
   background: var(--header-background);
   height: 4rem;
@@ -29,5 +29,36 @@ body {
 
   & .starting {
     color: #69f0ae;
+  }
+}
+
+.card-container {
+  min-height: 100vh;
+}
+
+.project-card {
+  position: relative;
+
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
+
+  & .project-card-content {
+    width: 80%;
+  }
+
+  & .extra-items {
+    margin-top: 1rem;
+    display: flex;
+
+    & .item {
+      margin-right: 10px;
+    }
+  }
+
+  & .percentage-funded {
+    position: absolute;
+    right: 2rem;
+    top: 25%;
   }
 }

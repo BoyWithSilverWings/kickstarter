@@ -2,7 +2,7 @@ import React from 'react';
 
 function Header() {
   return (
-    <header className='header'>
+    <header className='page-header'>
       <p>
         <span className='starting'>kick</span>
         <span>starter</span>
