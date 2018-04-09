@@ -1,4 +1,4 @@
-# Cleartrip Hiring Challenge
+# Cleartrip Challenge
 
 Instructions for running:
 1. `npm install`
